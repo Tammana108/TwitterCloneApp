@@ -33,7 +33,6 @@ class ProfileViewController: UIViewController {
         profileTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
         profileTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
        ]
-        
         let statusBarConstraints = [
             statusBarView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
             statusBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -108,3 +107,4 @@ extension ProfileViewController : UITableViewDataSource, UITableViewDelegate {
         }
     }
 }
+
