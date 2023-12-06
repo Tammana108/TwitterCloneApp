@@ -41,13 +41,13 @@ class ProfileViewController: UIViewController {
         ]
         
         NSLayoutConstraint.activate(profileTableViewConstraints)
-        NSLayoutConstraint.activate(statusBarConstraints)
+       // NSLayoutConstraint.activate(statusBarConstraints)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Profile"
         navigationController?.isNavigationBarHidden = true
-        view.addSubview(statusBarView)
+        //view.addSubview(statusBarView)
         view.addSubview(profileTableView)
         configureConstraints()
         
