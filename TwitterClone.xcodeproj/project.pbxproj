@@ -29,6 +29,7 @@
 		18EB6F802B203A9A00402639 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 18EB6F7F2B203A9A00402639 /* FirebaseFirestoreSwift */; };
 		18EB6F822B203A9A00402639 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 18EB6F812B203A9A00402639 /* FirebaseStorage */; };
 		18EB6F842B203A9A00402639 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 18EB6F832B203A9A00402639 /* FirebaseStorageCombine-Community */; };
+		84903C3A2B20E92100263023 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84903C392B20E92100263023 /* OnboardingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		18EB6F6C2B1DA07800402639 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		18EB6F6E2B1DE95500402639 /* ProfileTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableHeaderView.swift; sourceTree = "<group>"; };
 		18EB6F702B2038D600402639 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		84903C392B20E92100263023 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +90,8 @@
 		18EB6F492B18747E00402639 /* TwitterClone */ = {
 			isa = PBXGroup;
 			children = (
-				18EB6F602B18892700402639 /* Core */,
+				18EB6F682B18A0B500402639 /* Views */,
+				18EB6F602B18892700402639 /* Controllers */,
 				18EB6F4A2B18747E00402639 /* AppDelegate.swift */,
 				18EB6F4C2B18747E00402639 /* SceneDelegate.swift */,
 				18EB6F532B18748100402639 /* Assets.xcassets */,
@@ -99,17 +102,17 @@
 			path = TwitterClone;
 			sourceTree = "<group>";
 		};
-		18EB6F602B18892700402639 /* Core */ = {
+		18EB6F602B18892700402639 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				84903C382B20E8E400263023 /* Onboarding */,
 				18EB6F6B2B1DA05700402639 /* General */,
-				18EB6F682B18A0B500402639 /* Views */,
-				18EB6F672B18A0A000402639 /* Controllers */,
+				18EB6F672B18A0A000402639 /* Core */,
 			);
-			path = Core;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
-		18EB6F672B18A0A000402639 /* Controllers */ = {
+		18EB6F672B18A0A000402639 /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				18EB6F652B18898500402639 /* DirectMessageViewController.swift */,
@@ -118,7 +121,7 @@
 				18EB6F5E2B18891F00402639 /* HomeViewController.swift */,
 				18EB6F4E2B18747E00402639 /* MainTabbarViewController.swift */,
 			);
-			path = Controllers;
+			path = Core;
 			sourceTree = "<group>";
 		};
 		18EB6F682B18A0B500402639 /* Views */ = {
@@ -136,6 +139,14 @@
 				18EB6F6C2B1DA07800402639 /* ProfileViewController.swift */,
 			);
 			path = General;
+			sourceTree = "<group>";
+		};
+		84903C382B20E8E400263023 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				84903C392B20E92100263023 /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +243,7 @@
 				18EB6F4D2B18747E00402639 /* SceneDelegate.swift in Sources */,
 				18EB6F6D2B1DA07800402639 /* ProfileViewController.swift in Sources */,
 				18EB6F5F2B18891F00402639 /* HomeViewController.swift in Sources */,
+				84903C3A2B20E92100263023 /* OnboardingViewController.swift in Sources */,
 				18EB6F6A2B18A0E600402639 /* TweetTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
