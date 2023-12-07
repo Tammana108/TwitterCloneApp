@@ -6,8 +6,13 @@
 //
 
 import UIKit
+import FirebaseAuth
+import Combine
 
 class HomeViewController: UIViewController {
+    
+    private let viewModel = HomeViewViewModel()
+    private var subscriptions : Set<AnyCancellable> = []
     var XLogo = UIImageView()
     private var tableView : UITableView = {
         let tableView = UITableView()
@@ -27,8 +32,14 @@ class HomeViewController: UIViewController {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person"), style: .plain, target: self, action: #selector(profileButtonTapped))
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "rectangle.portrait.and.arrow.right"), style: .plain, target: self, action: #selector(signOutButtonTapped))
+        
     }
     
+    @objc func signOutButtonTapped(){
+        try? Auth.auth().signOut()
+        handleAuthentication()
+    }
     @objc private func profileButtonTapped(){
         navigationController?.pushViewController(ProfileViewController(), animated: true)
     }
@@ -40,6 +51,30 @@ class HomeViewController: UIViewController {
         else{
             XLogo.image = UIImage(named: "XLogoLight")
         }
+    }
+    
+    private func handleAuthentication(){
+        if Auth.auth().currentUser == nil {
+            let navVC = UINavigationController(rootViewController: OnboardingViewController())
+            navVC.modalPresentationStyle = .fullScreen
+            present(navVC, animated: false)
+            
+        }
+    }
+    
+    func completeUserOnboarding(){
+        present(ProfileDataFormViewController(), animated: true)
+        
+    }
+    
+    func bindViews(){
+        viewModel.$user.sink {[weak self] user in
+            guard let user = user else { return }
+            if !user.isUserOnboard {
+                self?.completeUserOnboarding()
+            }
+        }
+        .store(in: &subscriptions)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -55,11 +90,14 @@ class HomeViewController: UIViewController {
         
         tableView.frame = view.bounds
         configureNavigationBar()
+        bindViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
+        handleAuthentication()
+        viewModel.retrieveUser()
     }
 }
 
