@@ -16,6 +16,7 @@ class DatabaseManager {
     static let shared = DatabaseManager()
     let db = Firestore.firestore()
     let usersPath : String = "users"
+    let tweetsPath : String = "tweets"
     
     
     func collectionUser(from user : User) -> AnyPublisher<Bool, Error>{
@@ -65,6 +66,21 @@ class DatabaseManager {
             self.db.collection(self.usersPath)
                 .document(id)
                 .updateData(updateFields) { error in
+                    if let error = error {
+                        promise(.failure(error))
+                    } else {
+                        promise(.success(true))
+                    }
+                }
+        }.eraseToAnyPublisher()
+    }
+    
+    func collectionTweets(dispatch tweet : Tweet) -> AnyPublisher<Bool, Error> {
+        return Future {promise in
+            
+            try? self.db.collection(self.tweetsPath)
+                .document(tweet.id)
+                .setData(from : tweet) { error in
                     if let error = error {
                         promise(.failure(error))
                     } else {

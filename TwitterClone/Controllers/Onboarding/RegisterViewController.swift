@@ -56,7 +56,7 @@ class RegisterViewController: UIViewController {
         button.titleLabel?.font = .systemFont(ofSize: 20, weight: .semibold)
         button.layer.cornerRadius = 28
         button.isEnabled = false
-        button.backgroundColor = UIColor(red: 29/255, green: 161/255, blue: 242/255, alpha: 1)
+        button.backgroundColor = .tweetBackgroundColor
         return button
     }()
 

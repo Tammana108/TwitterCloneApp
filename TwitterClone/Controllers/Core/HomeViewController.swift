@@ -21,6 +21,21 @@ class HomeViewController: UIViewController {
         
     }()
     
+    private lazy var composeTweetButton : UIButton = {
+        let button = UIButton(type: .system, primaryAction: UIAction{[weak self]_ in
+            print("compose tweet button clicked!")
+            self?.navigateToTweetComposer()
+            
+        })
+        let buttonImage = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(pointSize: 18, weight: .bold))
+        button.setImage(buttonImage, for: .normal)
+        button.tintColor = .white
+        button.layer.cornerRadius = 30
+        button.backgroundColor = .tweetBackgroundColor
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     func configureNavigationBar(){
         let size : CGFloat = 36
         XLogo = UIImageView(frame: CGRect(x: 0, y: 0, width: size, height: size))
@@ -34,6 +49,12 @@ class HomeViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "rectangle.portrait.and.arrow.right"), style: .plain, target: self, action: #selector(signOutButtonTapped))
         
+    }
+    
+    @objc func navigateToTweetComposer() {
+        let vc = UINavigationController(rootViewController: TweetComposeViewController())
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
     
     @objc func signOutButtonTapped(){
@@ -77,6 +98,17 @@ class HomeViewController: UIViewController {
         .store(in: &subscriptions)
     }
     
+    private func configureConstraints() {
+        let composeTweetButtonConstraints = [
+            composeTweetButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            composeTweetButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -120),
+            composeTweetButton.widthAnchor.constraint(equalToConstant: 60),
+            composeTweetButton.heightAnchor.constraint(equalToConstant: 60)
+        ]
+        
+        NSLayoutConstraint.activate(composeTweetButtonConstraints)
+    }
+    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         setLogoImage()
@@ -85,11 +117,13 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(tableView)
+        view.addSubview(composeTweetButton)
         tableView.dataSource = self
         tableView.delegate = self
         
         tableView.frame = view.bounds
         configureNavigationBar()
+        configureConstraints()
         bindViews()
     }
     

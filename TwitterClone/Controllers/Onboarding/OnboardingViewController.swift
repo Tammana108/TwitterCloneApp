@@ -28,7 +28,7 @@ class OnboardingViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.font = .systemFont(ofSize: 24, weight: .bold)
         button.layer.cornerRadius = 25
-        button.backgroundColor = UIColor(red: 29/255, green: 161/255, blue: 242/255, alpha: 1)
+        button.backgroundColor = .tweetBackgroundColor
         return button
     }()
     
@@ -46,7 +46,7 @@ class OnboardingViewController: UIViewController {
         button.setTitle("Login", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .regular)
-        button.tintColor = UIColor(red: 29/255, green: 161/255, blue: 242/255, alpha: 1)
+        button.tintColor = .tweetBackgroundColor
         return button
     }()
   
