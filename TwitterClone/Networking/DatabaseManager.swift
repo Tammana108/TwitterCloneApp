@@ -60,6 +60,20 @@ class DatabaseManager {
         .eraseToAnyPublisher()
     }
     
+    func collectionUser(updateFields: [String: Any], for id: String) -> AnyPublisher<Bool, Error> {
+        return Future {promise in
+            self.db.collection(self.usersPath)
+                .document(id)
+                .updateData(updateFields) { error in
+                    if let error = error {
+                        promise(.failure(error))
+                    } else {
+                        promise(.success(true))
+                    }
+                }
+        }.eraseToAnyPublisher()
+    }
+    
     private init(){
         
     }

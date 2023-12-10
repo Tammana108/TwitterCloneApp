@@ -64,39 +64,34 @@ class ProfileTableHeaderView: UIView {
         return imageView
     }()
     
-    private let profileAvatarImageView : UIImageView = {
+    var profileAvatarImageView : UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "person")
         imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 40
-        imageView.backgroundColor = .systemYellow
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
         
     }()
     
-    private let displayNameLabel : UILabel = {
+    var displayNameLabel : UILabel = {
         let label = UILabel()
-        label.text = "Tammana Sharma"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .label
         label.font = .systemFont(ofSize: 20, weight: .bold)
         return label
     }()
     
-    private let userNameLabel : UILabel = {
+    var userNameLabel : UILabel = {
         let label = UILabel()
-        label.text = "@tammana108"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .secondaryLabel
         label.font = .systemFont(ofSize: 15, weight: .regular)
         return label
     }()
     
-    private let userBioLabel : UILabel = {
+    var userBioLabel : UILabel = {
         let label = UILabel()
-        label.text = "iOS Developer"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .label
         label.numberOfLines = 3
@@ -112,18 +107,16 @@ class ProfileTableHeaderView: UIView {
         return imageView
     }()
     
-    private let joinDateLabel : UILabel = {
+    var joinDateLabel : UILabel = {
         let label = UILabel()
-        label.text = "Joined May 2021"
         label.textColor = .secondaryLabel
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private let followingCountLabel : UILabel = {
+    var followingCountLabel : UILabel = {
         let label = UILabel()
-        label.text = "205"
         label.textColor = .label
         label.font = .systemFont(ofSize: 15, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -139,9 +132,8 @@ class ProfileTableHeaderView: UIView {
         return label
     }()
     
-    private let followersCountLabel : UILabel = {
+     var followersCountLabel : UILabel = {
         let label = UILabel()
-        label.text = "1M"
         label.textColor = .label
         label.font = .systemFont(ofSize: 15, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -213,8 +205,6 @@ class ProfileTableHeaderView: UIView {
     }
     
     func configureConstraints(){
-        
-     
         let profileHeaderImageViewConstraints = [
             profileHeaderImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             profileHeaderImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),

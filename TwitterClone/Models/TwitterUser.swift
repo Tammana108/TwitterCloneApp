@@ -14,8 +14,8 @@ struct TwitterUser : Codable {
     var id : String
     var displayName : String = ""
     var userName : String = ""
-    var followersCount : Double = 0
-    var followingCount : Double = 0
+    var followersCount : Int = 0
+    var followingCount : Int = 0
     var createdOn : Date = Date()
     var bio : String = ""
     var avatarPath : String = ""
@@ -52,8 +52,8 @@ struct TwitterUser : Codable {
           self.id = try container.decode(String.self, forKey: .id)
           self.displayName = try container.decode(String.self, forKey: .displayName)
           self.userName = try container.decode(String.self, forKey: .userName)
-          self.followersCount = try container.decode(Double.self, forKey: .followersCount)
-          self.followingCount = try container.decode(Double.self, forKey: .followingCount)
+          self.followersCount = try container.decode(Int.self, forKey: .followersCount)
+          self.followingCount = try container.decode(Int.self, forKey: .followingCount)
           self.createdOn = try container.decode(Date.self, forKey: .createdOn)
           self.bio = try container.decode(String.self, forKey: .bio)
           self.avatarPath = try container.decode(String.self, forKey: .avatarPath)
