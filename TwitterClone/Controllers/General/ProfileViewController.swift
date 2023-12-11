@@ -54,7 +54,7 @@ class ProfileViewController: UIViewController {
             guard let user = user else { return }
             
             self?.tableHeaderView.displayNameLabel.text = user.displayName
-            self?.tableHeaderView.userNameLabel.text = user.userName
+            self?.tableHeaderView.userNameLabel.text = "@\(user.userName)"
             self?.tableHeaderView.userBioLabel.text = user.bio
             self?.tableHeaderView.joinDateLabel.text = "\(user.createdOn)"
             self?.tableHeaderView.followersCountLabel.text = "\(user.followersCount)"

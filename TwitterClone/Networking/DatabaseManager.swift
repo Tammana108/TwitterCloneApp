@@ -90,6 +90,18 @@ class DatabaseManager {
         }.eraseToAnyPublisher()
     }
     
+    func collectionTweets(retrieveTweets forUserID: String) -> AnyPublisher<[Tweet], Error> {
+        self.db.collection(tweetsPath).whereField("authorId", isEqualTo: forUserID)
+                .getDocuments()
+                .tryMap { querySnapshot -> [Tweet] in
+                    let tweets = try querySnapshot.documents.compactMap { document -> Tweet? in
+                        try document.data(as: Tweet.self)
+                    }
+                    return tweets
+                }
+                .eraseToAnyPublisher()
+    }
+    
     private init(){
         
     }

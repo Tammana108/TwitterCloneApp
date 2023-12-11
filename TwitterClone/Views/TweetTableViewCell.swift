@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 protocol TweetCellButtonsTappedDelegate : AnyObject {
     func replyButtonTapped()
@@ -26,15 +27,13 @@ class TweetTableViewCell: UITableViewCell {
         imageView.layer.cornerRadius = 25
         imageView.layer.masksToBounds = true
         imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(systemName: "person")
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
     private var displayName : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Tammana"
         label.font = .systemFont(ofSize: 18, weight: .bold)
         return label
     }()
@@ -42,7 +41,6 @@ class TweetTableViewCell: UITableViewCell {
     private var usernameLabel : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "@tammana108"
         label.font = .systemFont(ofSize: 12, weight: .light)
         return label
     }()
@@ -50,7 +48,6 @@ class TweetTableViewCell: UITableViewCell {
     private var tweetContent : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "This is the dummy tweet Content. I am writing this tweet to test my UI. This text should be of multiple lines that is why i am writing multiple lines"
         label.font = .systemFont(ofSize: 15, weight: .regular)
         label.numberOfLines = 0
         label.textAlignment = .left
@@ -127,6 +124,14 @@ class TweetTableViewCell: UITableViewCell {
         retweetButton.addTarget(self, action: #selector(didTapRetweet), for: .touchUpInside)
         likeButton.addTarget(self, action: #selector(didTapLike), for: .touchUpInside)
         shareButton.addTarget(self, action: #selector(didTapShare), for: .touchUpInside)
+    }
+    
+    func configureTweet(with displayNameText : String, userName: String, tweetTextContent: String, profileImage : String){
+        displayName.text = displayNameText
+        usernameLabel.text = "@\(userName)"
+        tweetContent.text = tweetTextContent
+        profileImageView.sd_setImage(with: URL(string: profileImage))
+        
     }
     
     func configureConstraints(){
